@@ -16,31 +16,45 @@ namespace AdaCredit
             var transactionRepository = new TransactionRepository();
 
             //Geração de Dados Fakes:
-            Console.Write("Deseja gerar dados Fakes para Funcionários (S/N): ");
-            if(Console.ReadLine().ToUpper().Equals("S"))
-            {
-                employeeRepository.GenerateFakeEmployees(20);
-                Console.WriteLine("Funcionários gerados.");
-                Console.ReadKey();
-            }
-            
-            Console.Write("Deseja gerar dados Fakes para Clientes (S/N): ");
-            if (Console.ReadLine().ToUpper().Equals("S"))
-            {  
-                clientRepository.GenerateFakeClients(20);
-                Console.WriteLine("Clientes gerados.");
-                Console.ReadKey();
-            }
-            Console.Write("Deseja gerar dados Fakes para Transações (S/N): ");
+            Console.Write("Deseja gerar dados Fakes (S/N): ");
             if (Console.ReadLine().ToUpper().Equals("S"))
             {
-                transactionRepository.GenerateFakeTransactions();
-                Console.WriteLine("Transações geradas.");
-                Console.ReadKey();
+                Console.Clear();
+                Console.Write("Deseja gerar dados Fakes para Funcionários (S/N): ");
+                if (Console.ReadLine().ToUpper().Equals("S"))
+                {
+                    Console.Write("Quantos funcionários fakes deseja criar: ");
+                    employeeRepository.GenerateFakeEmployees(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Funcionários gerados.");
+                    Console.WriteLine("Pressione uma tecla para continuar...");
+                    Console.ReadKey();
+                }
+
+                Console.Clear();
+                Console.Write("Deseja gerar dados Fakes para Clientes (S/N): ");
+                if (Console.ReadLine().ToUpper().Equals("S"))
+                {
+                    Console.Write("Quantos clientes fakes deseja criar: ");
+                    clientRepository.GenerateFakeClients(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Clientes gerados.");
+                    Console.WriteLine("Pressione uma tecla para continuar...");
+                    Console.ReadKey();
+                }
+
+                Console.Clear();
+                Console.Write("Deseja gerar dados Fakes para Transações (S/N): ");
+                if (Console.ReadLine().ToUpper().Equals("S"))
+                {
+                    Console.Write("Quantas transações fakes com cada regra deseja criar: ");
+                    transactionRepository.GenerateFakeTransactions(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Transações geradas.");
+                    Console.WriteLine("Pressione uma tecla para continuar...");
+                    Console.ReadKey();
+                }
+                
             }
-            Console.Clear();
             //Logar o Usuário:
-            
+            Console.Clear();
             var loginScreen = new Login(employeeRepository);
             loginScreen.Show();          
             

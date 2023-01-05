@@ -103,7 +103,7 @@ namespace AdaCredit.Repositories
             }
         }
 
-        public void GenerateFakeTransactions()
+        public void GenerateFakeTransactions(int numberOfFakes)
         {
             var clientRepository = new ClientRepository();
             var _clients = clientRepository.GetClients();
@@ -122,7 +122,7 @@ namespace AdaCredit.Repositories
                 .RuleFor(t => t.Direction, f => f.PickRandom(1, 0))
                 .RuleFor(t => t.Amount, f => Math.Round(f.Random.Decimal(0, 100000),2));
             
-            foreach(var transaction in fakeTransactions.Generate(10))
+            foreach(var transaction in fakeTransactions.Generate(numberOfFakes))
             {
                 writer.WriteLine(transaction.ToString());
             }
@@ -139,7 +139,7 @@ namespace AdaCredit.Repositories
                 .RuleFor(t => t.Direction, f => f.PickRandom(1, 0))
                 .RuleFor(t => t.Amount, f => Math.Round(f.Random.Decimal(0, 100000), 2));
 
-            foreach (var transaction in fakeTransactions.Generate(10))
+            foreach (var transaction in fakeTransactions.Generate(numberOfFakes))
             {
                 writer.WriteLine(transaction.ToString());
             }
@@ -156,7 +156,7 @@ namespace AdaCredit.Repositories
                 .RuleFor(t => t.Direction, f => f.PickRandom(1, 0))
                 .RuleFor(t => t.Amount, f => Math.Round(f.Random.Decimal(0, 100000), 2));
 
-            foreach (var transaction in fakeTransactions.Generate(10))
+            foreach (var transaction in fakeTransactions.Generate(numberOfFakes))
             {
                 writer.WriteLine(transaction.ToString());
             }
@@ -173,7 +173,7 @@ namespace AdaCredit.Repositories
                 .RuleFor(t => t.Direction, f => f.PickRandom(1, 0))
                 .RuleFor(t => t.Amount, f => Math.Round(f.Random.Decimal(0, 100000), 2));
 
-            foreach (var transaction in fakeTransactions.Generate(10))
+            foreach (var transaction in fakeTransactions.Generate(numberOfFakes))
             {
                 writer.WriteLine(transaction.ToString());
             }
@@ -190,7 +190,7 @@ namespace AdaCredit.Repositories
                 .RuleFor(t => t.Direction, f => f.PickRandom(1, 0))
                 .RuleFor(t => t.Amount, f => Math.Round(f.Random.Decimal(0, 100000), 2));
 
-            foreach (var transaction in fakeTransactions.Generate(10))
+            foreach (var transaction in fakeTransactions.Generate(numberOfFakes))
             {
                 writer.WriteLine(transaction.ToString());
             }
