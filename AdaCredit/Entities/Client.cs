@@ -54,9 +54,21 @@ namespace AdaCredit.Entities
 
         public void WriteClientData()
         {
-            var statusDoCliente = Activate ? "Cliente Ativado" : "Cliente Desativado";
-            Console.WriteLine($"Nome Completo: {Name}\nDocumento: {Document}\nNúmero da Conta: {Account.Number.Insert(5, "-")}\n" +
-                $"Saldo do Cliente: R$ {Math.Round(Account.Balance, 2)}\nStatus do Cliente: {statusDoCliente}");
+            Console.WriteLine();
+            Console.WriteLine($"Nome Completo: {Name}");
+            Console.WriteLine($"CPF: {Document}");
+            Console.WriteLine($"Número da Conta: {Account.Number.Insert(5, "-")}");
+            if (Activate)
+            {
+                Console.WriteLine($"Saldo do Cliente: R$ {Math.Round(Account.Balance, 2)}");
+                Console.WriteLine($"Status do Cliente: Cliente ativo");
+            }
+            else
+            {
+                Console.WriteLine($"Saldo do Cliente: - ");
+                Console.WriteLine($"Status do Cliente: Cliente inativo");
+            }
+            Console.WriteLine("----------------------------");
         }
 
         

@@ -51,7 +51,11 @@ namespace AdaCredit
                     }
                     loggedIn = true;
                     employee.UpdateDateTime(DateTime.Now);
+                    Console.WriteLine(employee.LastLogin);
                     _employeeRepository.changeEmployee(employee, employee.Username);
+                    Console.WriteLine("Login efetuado com sucesso!");
+                    Console.WriteLine("Pressione uma tecla para continuar...") ;
+                    Console.ReadKey();
                     continue;
                 }
                 Console.WriteLine("Senha Incorreta!");

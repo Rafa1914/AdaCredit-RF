@@ -39,7 +39,7 @@ namespace AdaCredit.Repositories
 
                 while (csv.Read())
                 {
-                    _employees.Add(new Employee(csv.Record[0], csv.Record[1], csv.Record[2], csv.Record[3], bool.Parse(csv.Record[4])));
+                    _employees.Add(new Employee(csv.Record[0], csv.Record[1], csv.Record[2], csv.Record[3], bool.Parse(csv.Record[4]), Convert.ToDateTime(csv.Record[5])));
                 }
                 if(_employees.Count == 0)
                 {
@@ -112,7 +112,7 @@ namespace AdaCredit.Repositories
         {
 
             var employeeFaker = new Faker<Employee>("pt_BR")
-                .RuleFor(e => e.Username, f => f.Name.LastName())
+                .RuleFor(e => e.Username, f => f.Name.LastName()+f.Name.FirstName())
                 .RuleFor(e => e.Password, f => f.Random.ReplaceNumbers("######"))
                 .RuleFor(e => e.Activate, f => f.PickRandomParam(new bool[] { true, false }));
 

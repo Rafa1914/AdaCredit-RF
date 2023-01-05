@@ -43,14 +43,14 @@ namespace AdaCredit.Entities
             LastLogin = new DateTime(0);
         }
 
-        public Employee(string user, string pass, string salt, string hash, bool active)
+        public Employee(string user, string pass, string salt, string hash, bool active, DateTime lastLogin)
         {
             Username = user;
             Password = pass;
             Salt = salt;
             HashedPassword = hash;
             Activate = active;
-            LastLogin = new DateTime(0);
+            LastLogin = lastLogin;
         }
 
         public override string ToString()
@@ -70,8 +70,10 @@ namespace AdaCredit.Entities
 
         public void WriteEmployeeData()
         {
+            Console.WriteLine();
             Console.WriteLine($"Nome do Usuário: {Username}");
             Console.WriteLine($"Último Acesso: {LastLogin}");
+            Console.WriteLine("------------------------------");
         }
     }
 }
