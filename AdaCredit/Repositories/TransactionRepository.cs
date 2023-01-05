@@ -14,10 +14,11 @@ namespace AdaCredit.Repositories
     public class TransactionRepository
     {
         private List<Transaction> _transactions = new List<Transaction>();
-        //private string pathDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); 
-        private string transactionsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions\nome-do-banco-parceiro-aaaammdd.csv");
+        private string transactionsDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions");
         public TransactionRepository()
         {
+            string transactionsFileName = @"nome-do-banco-parceiro-aaaammdd-completed.csv";
+            string transactionsPath = Path.Combine(transactionsDirectoryPath, transactionsFileName);
             //Verificação da Existência do Arquivo:
             if (File.Exists(transactionsPath))
             {
@@ -44,7 +45,7 @@ namespace AdaCredit.Repositories
             }
             else
             {
-                string transactionsDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions");
+                //string transactionsDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions");
                 DirectoryInfo di = new DirectoryInfo(transactionsDirectoryPath);
                 if(!di.Exists)
                 {
@@ -61,8 +62,9 @@ namespace AdaCredit.Repositories
 
         public void SaveCompleted()
         {
-            string transactionsCompletedDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions\Completed");
-            string transactionsCompletedPath = Path.Combine(transactionsCompletedDirectoryPath, "nome-do-banco-parceiro-aaaammdd-completed.csv");
+            string transactionsCompletedDirectoryPath = Path.Combine(transactionsDirectoryPath, @"Completed");
+            string transactionsCompletedFileName = @"nome-do-banco-parceiro-aaaammdd-completed.csv";
+            string transactionsCompletedPath = Path.Combine(transactionsCompletedDirectoryPath, transactionsCompletedFileName);
             DirectoryInfo di = new DirectoryInfo(transactionsCompletedDirectoryPath);
 
             if(!di.Exists)
@@ -83,8 +85,9 @@ namespace AdaCredit.Repositories
 
         public void SaveFailed()
         {
-            string transactionsFailedDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions\Failed");
-            string transactionsFailedPath = Path.Combine(transactionsFailedDirectoryPath, "nome-do-banco-parceiro-aaaammdd-failed.csv");
+            string transactionsFailedDirectoryPath = Path.Combine(transactionsDirectoryPath, @"Failed");
+            string transactionsFailedFileName = @"nome-do-banco-parceiro-aaaammdd-failed.csv";
+            string transactionsFailedPath = Path.Combine(transactionsFailedDirectoryPath, transactionsFailedFileName);
             DirectoryInfo di = new DirectoryInfo(transactionsFailedDirectoryPath);
 
             if (!di.Exists)
@@ -104,6 +107,8 @@ namespace AdaCredit.Repositories
         {
             var clientRepository = new ClientRepository();
             var _clients = clientRepository.GetClients();
+            string transactionsFileName = @"nome-do-banco-parceiro-aaaammdd-completed.csv";
+            string transactionsPath = Path.Combine(transactionsDirectoryPath, transactionsFileName);
             using var writer = new StreamWriter(transactionsPath);
             //Transações Quaisquer
             var fakeTransactions = new Faker<Transaction>()

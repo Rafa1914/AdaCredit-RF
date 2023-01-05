@@ -29,8 +29,28 @@ namespace AdaCredit
                 Console.Write("Digite o Nome do Usuário: ");
                 var username = Console.ReadLine();
 
+                //var password = Console.ReadLine();
+                var password = String.Empty;
+                ConsoleKey key;
                 Console.Write("Digite a Senha: "); //Trocar para char prompt ou getpass
-                var password = Console.ReadLine();
+                do
+                {
+                    var keyInfo = Console.ReadKey(intercept: true);
+                    key = keyInfo.Key;
+
+                    if (key == ConsoleKey.Backspace && password.Length > 0)
+                    {
+                        Console.Write("\b \b");
+                        password = password[0..^1];
+                    }
+                    else if (!char.IsControl(keyInfo.KeyChar))
+                    {
+                        Console.Write("*");
+                        password += keyInfo.KeyChar;
+                    }
+                } while (key != ConsoleKey.Enter);
+                Console.WriteLine();
+
 
                 var employee = _employeeRepository.FindEmployee(username);
                 if(employee is null)
