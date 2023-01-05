@@ -44,6 +44,12 @@ namespace AdaCredit.Repositories
             }
             else
             {
+                string transactionsDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), @"Transactions");
+                DirectoryInfo di = new DirectoryInfo(transactionsDirectoryPath);
+                if(!di.Exists)
+                {
+                    di.Create();
+                }
                 using var writer = new StreamWriter(transactionsPath);
             }
         }
