@@ -16,9 +16,6 @@ namespace AdaCredit.Entities
         public string DestinyBank { get; private set; }
         public string DestinyBranch { get; private set; }
         public string DestinyAccountNumber { get; private set; }
-
-        //public Dictionary<string, string> Origin { get; private set; }
-        //public Dictionary<string, string> Destiny { get; private set; }
         public string Type { get; private set; }
         public int Direction { get; private set; }
         public decimal Amount { get; private set; }
@@ -41,22 +38,13 @@ namespace AdaCredit.Entities
             DestinyBank = destinyBank;
             DestinyBranch = destinyBranch;
             DestinyAccountNumber = destinyAccount;
-            /*Origin = new Dictionary<string, string>()
-            {
-                {"Bank",originBank},
-                {"Branch",originBranch},
-                {"Account",originAccount.Insert(5,"-")}
-            };
-            Destiny = new Dictionary<string, string>()
-            {
-                {"Bank",destinyBank},
-                {"Branch",destinyBranch},
-                {"Account",destinyAccount.Insert(5,"-")}
-            };*/
             Type = type;
             Direction = direction;
             Amount = amount;
-            Fee = GetTransactionFee.Execute(type, amount);
+            if (DateTime.Compare(new DateTime(2022, 11, 30), DateTime.Today) > 0)
+                Fee = 0;
+            else
+                Fee = GetTransactionFee.Execute(type, amount);
             Valid = true;
             ErrorMessage = "";
         }
