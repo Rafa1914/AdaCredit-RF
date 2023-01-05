@@ -26,18 +26,30 @@ namespace AdaCredit.UseCases
 
             if (transaction.OriginBank == "777")
             {
-                if (clientRepository.GetClientByAccount(transaction.OriginAccountNumber) is null)
+                var client = clientRepository.GetClientByAccount(transaction.OriginAccountNumber);
+                if (client is null)
                 {
                     transaction.ErrorMessage = "Conta de origem inexistente";
+                    return false;
+                }
+                if(!client.Activate)
+                {
+                    transaction.ErrorMessage = "Conta de origem está desativada";
                     return false;
                 }
             }
 
             if (transaction.DestinyBank == "777")
             {
-                if (clientRepository.GetClientByAccount(transaction.DestinyAccountNumber) is null)
+                var client = clientRepository.GetClientByAccount(transaction.DestinyAccountNumber);
+                if (client is null)
                 {
                     transaction.ErrorMessage = "Conta de destino inexistente";
+                    return false;
+                }
+                if(!client.Activate)
+                {
+                    transaction.ErrorMessage = "Conta de destino está desativada";
                     return false;
                 }
             }

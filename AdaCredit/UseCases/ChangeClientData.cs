@@ -25,9 +25,16 @@ namespace AdaCredit.UseCases
 
             var clientCorrected = new Client(nameCorrected, documentCorrected);
 
-            clientRepository.ChangeClient(document, clientCorrected);
-
-            Console.WriteLine("Dados alterados com sucesso!");
+            if(clientRepository.FindClient(document) is null)
+            {
+                Console.WriteLine("Cliente não encontrado.");
+            }
+            else
+            {
+                clientRepository.ChangeClient(document, clientCorrected);
+                Console.WriteLine("Dados alterados com sucesso!");
+            }
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
 
         }

@@ -28,6 +28,7 @@ namespace AdaCredit.UseCases
                 return;
             }
             client.WriteClientData();
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
     }

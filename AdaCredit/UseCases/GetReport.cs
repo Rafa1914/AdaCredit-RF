@@ -23,6 +23,7 @@ namespace AdaCredit.UseCases
                     client.WriteClientData();
                 }
             }
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -36,6 +37,7 @@ namespace AdaCredit.UseCases
                     client.WriteClientData();
                 }
             }
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -49,6 +51,7 @@ namespace AdaCredit.UseCases
                     employee.WriteEmployeeData();
                 }
             }
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -62,6 +65,7 @@ namespace AdaCredit.UseCases
                     transaction.WriteTransactionData();
                 }
             }
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
 

@@ -61,6 +61,7 @@ namespace AdaCredit.Entities
 
         public void WriteTransactionData()
         {
+            Console.WriteLine();
             Console.WriteLine($"Banco de Origem: {OriginBank}");
             Console.WriteLine($"Agência de Origem: {OriginBranch}");
             Console.WriteLine($"Conta de Origem: {OriginAccountNumber.Insert(5,"-")}");
@@ -70,6 +71,7 @@ namespace AdaCredit.Entities
             Console.WriteLine($"Tipo da Transação: {Type}");
             Console.WriteLine($"Valor da Transação: {Amount}");
             Console.WriteLine($"Motivo da Falha: {ErrorMessage}");
+            Console.WriteLine("------------------------------------");
         }
     }
 }

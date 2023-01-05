@@ -32,6 +32,7 @@ namespace AdaCredit.UseCases
             else
                 Console.WriteLine("Falha no cadastro!");
 
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
     }

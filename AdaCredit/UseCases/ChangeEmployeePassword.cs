@@ -50,6 +50,7 @@ namespace AdaCredit.UseCases
             employeeRepository.changeEmployee(employee,user);
 
             Console.WriteLine("Senha alterada com sucesso.");
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
     }

@@ -87,14 +87,7 @@ namespace AdaCredit.Repositories
 
         public void ChangeClient(string? document, Client client)
         {
-            var index = _clients.FindIndex(x => x.Document.Equals(document));
-            if (index == -1)
-            {
-                Console.WriteLine("Não foi possível encontrar o Cliente.");
-                Console.ReadKey();
-                return;
-            }
-                     
+            var index = _clients.FindIndex(x => x.Document.Equals(document));                     
             var accountNumber = _clients[index].Account.Number;
             var accountRepository = new AccountRepository();
 

@@ -21,15 +21,17 @@ namespace AdaCredit.UseCases
             if (employee is null)
             {
                 Console.WriteLine("Usuário não encontrado.");
-                Console.ReadKey();
-                return;
             }
-
-            employee.Deactivate();
-
-            employeeRepository.changeEmployee(employee, user);
-
-            Console.WriteLine("Usuário desativado!");
+            else
+            {
+                if(employee.Activate)
+                {
+                    employee.Deactivate();
+                    employeeRepository.changeEmployee(employee, user);
+                    Console.WriteLine("Usuário desativado!");
+                }
+            }          
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }
     }

@@ -49,6 +49,7 @@ namespace AdaCredit.UseCases
             transactionRepository.SaveFailed();
 
             Console.WriteLine("Transações Processadas.");
+            Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
 
         }
