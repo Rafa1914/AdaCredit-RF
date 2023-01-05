@@ -46,16 +46,6 @@ namespace AdaCredit
             
             //Inicializando o Menu:
             Menu.Show();
-
-
-
-
-
-
-
-
-
-            //Console.WriteLine("Teste");
         }
     }
 }
