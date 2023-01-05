@@ -13,6 +13,9 @@ namespace AdaCredit.UseCases
         {
             Console.Write("Digite o CPF do cliente que deseja desativar (sem formatação): ");
             var document = Console.ReadLine();
+            document = document.Insert(3, ".");
+            document = document.Insert(7, ".");
+            document = document.Insert(11, "-");
 
             var clientRepository = new ClientRepository();
 

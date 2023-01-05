@@ -16,12 +16,18 @@ namespace AdaCredit.UseCases
 
             Console.Write("Digite o CPF do cliente que deseja alterar (sem formatação): ");
             var document = Console.ReadLine();
+            document = document.Insert(3, ".");
+            document = document.Insert(7, ".");
+            document = document.Insert(11, "-");
 
             Console.WriteLine("Digite os dados corrigidos:");
             Console.Write("Nome: ");
             var nameCorrected = Console.ReadLine();
             Console.Write("CPF (sem formatação): ");
             var documentCorrected = Console.ReadLine();
+            documentCorrected = documentCorrected.Insert(3, ".");
+            documentCorrected = documentCorrected.Insert(7, ".");
+            documentCorrected = documentCorrected.Insert(11, "-");
 
             var clientCorrected = new Client(nameCorrected, documentCorrected);
 

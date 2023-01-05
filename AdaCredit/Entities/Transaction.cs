@@ -69,7 +69,7 @@ namespace AdaCredit.Entities
             Console.WriteLine($"Agência de Destino: {DestinyBranch}");
             Console.WriteLine($"Conta de Destino: {DestinyAccountNumber.Insert(5,"-")}");
             Console.WriteLine($"Tipo da Transação: {Type}");
-            Console.WriteLine($"Valor da Transação: {Amount}");
+            Console.WriteLine($"Valor da Transação: R$ {Amount}");
             Console.WriteLine($"Motivo da Falha: {ErrorMessage}");
             Console.WriteLine("------------------------------------");
         }

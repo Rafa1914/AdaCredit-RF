@@ -24,10 +24,12 @@ namespace AdaCredit.UseCases
             if(client is null)
             {
                 Console.WriteLine("Não foi possível encontrar o cliente.");
-                Console.ReadKey();
-                return;
             }
-            client.WriteClientData();
+            else
+            {
+                client.WriteClientData();
+            }
+            
             Console.WriteLine("Pressione uma tecla para continuar...");
             Console.ReadKey();
         }

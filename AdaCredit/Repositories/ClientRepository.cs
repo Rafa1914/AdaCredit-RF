@@ -132,5 +132,14 @@ namespace AdaCredit.Repositories
         {
             return _clients;
         }
+
+        public void ChangeClientByAccount(string accountNumber, Client client)
+        {
+            var index = _clients.FindIndex(x => x.Account.Number.Equals(accountNumber));
+            var accountRepository = new AccountRepository();
+            _clients[index] = new Client(client.Name, client.Document, accountRepository.GetAccount(accountNumber), client.Activate);
+
+            Save();
+        }
     }
 }
